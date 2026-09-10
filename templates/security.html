@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Security Checks | SecureApp{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <div class="page-heading">
+
+        <p class="eyebrow">
+            SECURITY ANALYSIS
+        </p>
+
+        <h1>Application Security Checks</h1>
+
+        <p>
+            Basic security controls implemented in this application.
+        </p>
+
+    </div>
+
+
+    <div class="security-grid">
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Secure Password Hashing</h3>
+
+                <p>
+                    Passwords are never stored as plain text.
+                    A password hashing function is used before storage.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Input Validation</h3>
+
+                <p>
+                    Usernames and passwords are validated before
+                    account creation.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Authentication</h3>
+
+                <p>
+                    Protected pages require an authenticated
+                    user session.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Authorization</h3>
+
+                <p>
+                    Administrator resources are restricted
+                    using role-based access control.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Error Handling</h3>
+
+                <p>
+                    Custom error pages are provided for
+                    common application errors.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+
+        <div class="security-card">
+
+            <span class="check-icon">✓</span>
+
+            <div>
+                <h3>Security Logging</h3>
+
+                <p>
+                    Login, logout and registration events
+                    are recorded for monitoring.
+                </p>
+            </div>
+
+            <strong class="pass">
+                PASS
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="recommendations">
+
+        <h2>Security Recommendations</h2>
+
+        <ul>
+
+            <li>Use HTTPS in production.</li>
+
+            <li>Store the Flask secret key in an environment variable.</li>
+
+            <li>Use a strong unique secret key.</li>
+
+            <li>Enable additional login protection such as rate limiting.</li>
+
+            <li>Keep application dependencies updated.</li>
+
+            <li>Use secure cookie settings in production.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+{% endblock %}

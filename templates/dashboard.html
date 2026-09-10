@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | SecureApp{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="welcome-section">
+
+        <div>
+
+            <p class="eyebrow">
+                SECURITY PORTAL
+            </p>
+
+            <h1>
+                Welcome, {{ username }} 👋
+            </h1>
+
+            <p>
+                Your application security dashboard is ready.
+            </p>
+
+        </div>
+
+        <div class="role-badge">
+
+            {% if role == "admin" %}
+                👑 Administrator
+            {% else %}
+                👤 User
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <h3>Authentication</h3>
+
+            <p>
+                Your account uses secure password hashing
+                and session-based authentication.
+            </p>
+
+            <span class="secure-label">
+                ✓ Protected
+            </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>Authorization</h3>
+
+            <p>
+                Access to protected areas is controlled
+                according to your assigned role.
+            </p>
+
+            <span class="secure-label">
+                ✓ Role Controlled
+            </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ✅
+            </div>
+
+            <h3>Input Validation</h3>
+
+            <p>
+                Usernames and passwords are checked
+                against defined security rules.
+            </p>
+
+            <span class="secure-label">
+                ✓ Enabled
+            </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+            <h3>Activity Logging</h3>
+
+            <p>
+                Important authentication activities are
+                recorded for security monitoring.
+            </p>
+
+            <span class="secure-label">
+                ✓ Logging Active
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-actions">
+
+        <a href="{{ url_for('security_dashboard') }}"
+           class="action-card">
+
+            <span>🔎</span>
+
+            <div>
+                <strong>Security Checks</strong>
+
+                <small>
+                    Review application security controls
+                </small>
+            </div>
+
+        </a>
+
+
+        {% if role == "admin" %}
+
+        <a href="{{ url_for('admin_dashboard') }}"
+           class="action-card">
+
+            <span>⚙️</span>
+
+            <div>
+                <strong>Admin Console</strong>
+
+                <small>
+                    Manage users and review activity
+                </small>
+            </div>
+
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

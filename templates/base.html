@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}SecureApp{% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-brand">
+            🛡️ SecureApp
+        </div>
+
+        {% if session.get("username") %}
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('security_dashboard') }}">
+                Security
+            </a>
+
+            {% if session.get("role") == "admin" %}
+
+            <a href="{{ url_for('admin_dashboard') }}">
+                Admin
+            </a>
+
+            {% endif %}
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </nav>
+
+
+    <main class="main-content">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <footer class="main-footer">
+
+        <strong>SecureApp Security Portal</strong>
+
+        <span>
+            Educational Application Security Project
+        </span>
+
+    </footer>
+
+</body>
+
+</html>

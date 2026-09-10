@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console | SecureApp{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <div class="page-heading">
+
+        <p class="eyebrow">
+            ADMINISTRATION
+        </p>
+
+        <h1>Security Administration Console</h1>
+
+        <p>
+            Monitor users and application security activity.
+        </p>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="admin-stats">
+
+        <div class="admin-stat">
+
+            <small>Total Users</small>
+
+            <strong>
+                {{ statistics.total_users }}
+            </strong>
+
+        </div>
+
+
+        <div class="admin-stat">
+
+            <small>Administrators</small>
+
+            <strong>
+                {{ statistics.admin_users }}
+            </strong>
+
+        </div>
+
+
+        <div class="admin-stat">
+
+            <small>Security Events</small>
+
+            <strong>
+                {{ statistics.total_logs }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- Users -->
+
+    <div class="admin-panel">
+
+        <div class="panel-heading">
+
+            <h2>User Accounts</h2>
+
+            <span>
+                {{ statistics.total_users }} accounts
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Created</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for user in users %}
+
+                    <tr>
+
+                        <td>
+                            {{ user.id }}
+                        </td>
+
+                        <td class="table-user">
+                            {{ user.username }}
+                        </td>
+
+                        <td>
+
+                            {% if user.role == "admin" %}
+
+                            <span class="admin-role">
+                                👑 Admin
+                            </span>
+
+                            {% else %}
+
+                            <span class="user-role">
+                                👤 User
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ user.created_at }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- Activity -->
+
+    <div class="admin-panel">
+
+        <div class="panel-heading">
+
+            <h2>Recent Security Activity</h2>
+
+            <span>
+                Latest events
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>IP Address</th>
+                        <th>Time</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for log in logs %}
+
+                    <tr>
+
+                        <td>
+                            {{ log.username }}
+                        </td>
+
+                        <td>
+                            {{ log.action }}
+                        </td>
+
+                        <td class="table-ip">
+                            {{ log.ip_address }}
+                        </td>
+
+                        <td>
+                            {{ log.created_at }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
